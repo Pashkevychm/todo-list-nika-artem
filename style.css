@@ -1,3 +1,66 @@
-.btn {
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+body {
+    background-color: lightblue;
+    font-family: "Pacifico", cursive;
+}
+
+h1 {
+    text-align: center;
+}
+
+main {
     
+    margin: 0 20%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50px;
+    padding: 50px;
+    
+
+}
+
+input {
+    border-radius: 50px;
+    width: 100%;
+    text-align: center;
+}
+
+.btn {
+    /* Rectangle 2 */
+    position: relative;
+    right: 50px;
+    width: 81px;
+    height: 39px;
+    background: #89bcf3;
+    border-radius: 50px;
+}
+
+.add-task {
+    display: flex;
+    margin: 30px;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    
+}
+
+.task button {
+    background-color: rgb(155, 243, 174);
+    border-radius: 30px;
+}
+
+.task p {
+    color: red;
+    font-size: 20px;
+    background-color: rgb(104, 224, 198);
+    border-radius: 40px;
+    padding: 4;
 }
