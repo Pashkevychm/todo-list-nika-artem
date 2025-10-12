@@ -2,10 +2,19 @@ function createTask(text) {
     let task = document.createElement('div');
     task.classList.add('task');
     task.innerHTML = `
-        <p>${text}</p>
+        <input type="checkbox">
+        <p class="task-text">${text}</p>
         <button class="delete-btn">Delete</button>
     `;
     return task
+}
+
+
+
+function saveTasks() {
+    let encodedHTML = encodeURIComponent(task_list.innerHTML);
+    let new_cookie = `tasks=${encodedHTML}; max-age=31536000; path=/`;
+    document.cookie = new_cookie;
 }
 
 let input_field = document.querySelector("input")
@@ -18,8 +27,7 @@ add_btn.addEventListener("click", function () {
         let newTask = createTask(taskText);
         task_list.appendChild(newTask);
         input_field.value = '';
-        let new_cookie = `tasks=${task_list.innerHTML}; max-age=100000`
-        document.cookie = new_cookie
+        saveTasks();
     }
 })
 
@@ -28,6 +36,7 @@ task_list.addEventListener("click", function (e) {
     if (!taskElement) return;
     if (e.target.classList.contains('delete-btn')) {
         taskElement.remove();
+        saveTasks();
         return;
     }
 })
@@ -38,7 +47,7 @@ let cookies = document.cookie.split(';')
 for (let i = 0; i < cookies.length; i +=1) {
     let key_vaule = cookies[i].split('=')
     if (key_vaule[0] == 'tasks') {
-        cookie = key_vaule[1]
+        cookie = decodeURIComponent(key_vaule[1])
         break
     }
 }
@@ -46,3 +55,4 @@ for (let i = 0; i < cookies.length; i +=1) {
 if (cookie) {
     task_list.innerHTML = cookie
 }
+
