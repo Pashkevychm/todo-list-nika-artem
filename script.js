@@ -36,9 +36,15 @@ task_list.addEventListener("click", function (e) {
     if (!taskElement) return;
     if (e.target.classList.contains('delete-btn')) {
         taskElement.remove();
-        saveTasks();
-        return;
     }
+    if (e.target.type == 'checkbox'){
+        if (e.target.checked){
+            e.target.setAttribute('checked','');
+        }else{
+            e.target.removeAttribute('checked');
+        }
+    }
+    saveTasks();
 })
 
 let cookie = false
