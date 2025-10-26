@@ -10,7 +10,6 @@ function createTask(text) {
 }
 
 
-
 function saveTasks() {
     let encodedHTML = encodeURIComponent(task_list.innerHTML);
     let new_cookie = `tasks=${encodedHTML}; max-age=31536000; path=/`;
@@ -61,4 +60,3 @@ for (let i = 0; i < cookies.length; i +=1) {
 if (cookie) {
     task_list.innerHTML = cookie
 }
-
